@@ -1,0 +1,10 @@
+/.vs
+
+
+
+**/obj
+**/bin
+
+**.user
+/nuget
+
