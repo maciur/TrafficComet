@@ -13,14 +13,14 @@ namespace TrafficComet.Core.Tests.Tests.Generators
 		public void Correct_GetTraceIdFromHeader()
 		{
 			var httpContextAccessor = MockServicesHelper.CreateHttpContextAccessor(requestHeaders: MockStaticData.RequestHeadersWithTrackIds);
-			var traceIdGenerator = new TraceIdFromHeaderGenerator(httpContextAccessor);
+			var traceIdGenerator = new HttpHeaderTraceIdGenerator(httpContextAccessor);
 			Assert.AreEqual(traceIdGenerator.GenerateTraceId(), MockStaticData.TraceId);
 		}
 
 		[Test]
 		public void ThrowException_GetTraceIdFromHeader()
 		{
-			var traceIdGenerator = new TraceIdFromHeaderGenerator(MockServicesHelper.CreateHttpContextAccessor());
+			var traceIdGenerator = new HttpHeaderTraceIdGenerator(MockServicesHelper.CreateHttpContextAccessor());
 			Assert.Throws<NullReferenceException>(() => traceIdGenerator.GenerateTraceId());
 		}
 	}

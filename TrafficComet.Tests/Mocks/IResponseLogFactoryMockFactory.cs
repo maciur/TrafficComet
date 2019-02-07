@@ -1,6 +1,6 @@
 ﻿using Moq;
 using TrafficComet.Abstracts.Logs.Response;
-using TrafficComet.Abstractss.Factories;
+using TrafficComet.Abstracts.Factories;
 
 namespace TrafficComet.Core.Tests.Mock
 {

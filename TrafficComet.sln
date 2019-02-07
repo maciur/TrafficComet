@@ -7,18 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficComet.Core", "Traffi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficComet.Abstracts", "TrafficComet.Abstracts\TrafficComet.Abstracts.csproj", "{26E3894A-2B59-451D-9BF2-342BC1F81D22}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficComet.JsonLogWriter", "TrafficComet.JsonLogWriter\TrafficComet.JsonLogWriter.csproj", "{41B7AED0-51E5-4E37-BE2F-BAE6DF2CE45E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficComet.Core.Tests", "TrafficComet.Tests\TrafficComet.Core.Tests.csproj", "{6ED8D654-DCB7-4E77-821F-781D130DBFB1}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficComet.JsonLogWriter.Tests", "TrafficComet.Files.Tests\TrafficComet.JsonLogWriter.Tests.csproj", "{9F6B46E2-66BD-4A6D-8BCE-4B7D360FF565}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{B9EB26E3-E2A0-41D5-90EC-5D7E48D08BBF}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimpleWebApi", "SimpleWebApi", "{BA7C7BD0-4E9F-4F63-8751-A7FF90D8B450}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficComet.WebApiTest", "samples\SimpleWebApi\TrafficComet.WebApiTest\TrafficComet.WebApiTest.csproj", "{3DFC7CE7-5D95-4C6A-93D9-ED87E3CCBDA8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,29 +21,9 @@ Global
 		{26E3894A-2B59-451D-9BF2-342BC1F81D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26E3894A-2B59-451D-9BF2-342BC1F81D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26E3894A-2B59-451D-9BF2-342BC1F81D22}.Release|Any CPU.Build.0 = Release|Any CPU
-		{41B7AED0-51E5-4E37-BE2F-BAE6DF2CE45E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{41B7AED0-51E5-4E37-BE2F-BAE6DF2CE45E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{41B7AED0-51E5-4E37-BE2F-BAE6DF2CE45E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{41B7AED0-51E5-4E37-BE2F-BAE6DF2CE45E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6ED8D654-DCB7-4E77-821F-781D130DBFB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6ED8D654-DCB7-4E77-821F-781D130DBFB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6ED8D654-DCB7-4E77-821F-781D130DBFB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6ED8D654-DCB7-4E77-821F-781D130DBFB1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F6B46E2-66BD-4A6D-8BCE-4B7D360FF565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F6B46E2-66BD-4A6D-8BCE-4B7D360FF565}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F6B46E2-66BD-4A6D-8BCE-4B7D360FF565}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F6B46E2-66BD-4A6D-8BCE-4B7D360FF565}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3DFC7CE7-5D95-4C6A-93D9-ED87E3CCBDA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3DFC7CE7-5D95-4C6A-93D9-ED87E3CCBDA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3DFC7CE7-5D95-4C6A-93D9-ED87E3CCBDA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3DFC7CE7-5D95-4C6A-93D9-ED87E3CCBDA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{BA7C7BD0-4E9F-4F63-8751-A7FF90D8B450} = {B9EB26E3-E2A0-41D5-90EC-5D7E48D08BBF}
-		{3DFC7CE7-5D95-4C6A-93D9-ED87E3CCBDA8} = {BA7C7BD0-4E9F-4F63-8751-A7FF90D8B450}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {06F12E99-7ACF-4239-B4F7-0E4A6CCC3EAF}

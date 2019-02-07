@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 using System;
+using System.Linq;
 
 namespace TrafficComet.Core.Generators
 {
@@ -13,13 +14,14 @@ namespace TrafficComet.Core.Generators
 			HttpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
 		}
 
-		protected string GetHeaderValue(string headerName)
+		protected bool TryGetHeaderValue(string headerName, out string headerValue)
 		{
-			if (HttpContextAccessor.HttpContext.Request.Headers.TryGetValue(headerName, out StringValues headerValue))
+			headerValue = string.Empty;
+			if (HttpContextAccessor.HttpContext.Request.Headers.TryGetValue(headerName, out StringValues headerValues))
 			{
-				return headerValue;
+				headerValue = headerValues.FirstOrDefault();
 			}
-			throw new NullReferenceException($"Couldn't found TrafficComet Header: {headerName}");
+			return !string.IsNullOrEmpty(headerValue);
 		}
 	}
 }

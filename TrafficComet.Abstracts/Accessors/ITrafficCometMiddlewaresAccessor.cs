@@ -12,7 +12,7 @@ namespace TrafficComet.Abstracts.Accessors
         DateTime StartDateLocal { get;}
         DateTime EndDateLocal { get; }
         string TraceId { get; }
-		string ClientUniqueId { get; }
+		string ClientId { get; }
 		string ApplicationId { get; }
 		bool IgnoreWholeRequest { get; }
 		bool IgnoreRequest { get; }

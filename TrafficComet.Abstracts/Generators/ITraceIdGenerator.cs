@@ -2,6 +2,6 @@
 {
 	public interface ITraceIdGenerator
 	{
-		string GenerateTraceId();
+        bool TryGenerateTraceId(out string traceId);
 	}
 }

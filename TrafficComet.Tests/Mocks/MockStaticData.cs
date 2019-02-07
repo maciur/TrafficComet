@@ -57,8 +57,8 @@ namespace TrafficComet.Core.Tests.Tests.Mocks
 		internal readonly static IHeaderDictionary RequestHeadersWithTrackIds = new HeaderDictionary
 		{
 			{ "Test-Header", "Test-Header-Value" },
-			{ TrafficCometConstValues.TraceIdHeader, TraceId },
-			{ TrafficCometConstValues.ClientUniqueIdHeader, UserUniqueId }
+			{ DefaultTrafficCometValues.TRACE_ID_HEADER, TraceId },
+			{ DefaultTrafficCometValues.CLIENT_ID_HEADER, UserUniqueId }
 		};
 
 		internal readonly static IRequestCookieCollection RequestCookies =
@@ -71,7 +71,7 @@ namespace TrafficComet.Core.Tests.Tests.Mocks
 		internal readonly static IRequestCookieCollection RequestCookiesWithTrackIds =
 			new RequestCookieCollection(new Dictionary<string, string>
 			{
-				{ TrafficCometConstValues.DefaultClientUniqueIdCookieName, UserUniqueId },
+				{ DefaultTrafficCometValues.CLIENT_ID_COOKIE_NAME, UserUniqueId },
 			});
 
 		internal readonly static IHeaderDictionary ResponseHeaders = new HeaderDictionary

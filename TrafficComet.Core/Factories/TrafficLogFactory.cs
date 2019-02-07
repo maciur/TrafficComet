@@ -4,7 +4,7 @@ using TrafficComet.Abstracts.Factories;
 using TrafficComet.Abstracts.Logs;
 using TrafficComet.Abstracts.Logs.Request;
 using TrafficComet.Abstracts.Logs.Response;
-using TrafficComet.Abstractss.Factories;
+using TrafficComet.Abstracts.Factories;
 
 namespace TrafficComet.Core.Factories
 {

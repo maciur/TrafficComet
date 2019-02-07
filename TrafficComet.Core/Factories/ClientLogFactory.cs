@@ -36,7 +36,7 @@ namespace TrafficComet.Core.Factories
         {
             return new ClientTrafficLog
             {
-                Id = TrafficCometAccessor.ClientUniqueId,
+                Id = TrafficCometAccessor.ClientId,
                 IpAddress = AddressIpReader.GetClientIpAddress(),
                 UserAgent = GetUserAgentHeader()
             };
@@ -44,7 +44,7 @@ namespace TrafficComet.Core.Factories
 
         protected string GetUserAgentHeader()
         {
-            if (Request.Headers.TryGetValue(RequestHeadersToIgnoreConsts.UserClient, out StringValues headerValues))
+            if (Request.Headers.TryGetValue(RequestHeadersToIgnoreConsts.USER_CLIENT, out StringValues headerValues))
             {
                 return headerValues.FirstOrDefault() ?? EMPTY_HEADER_VALUE;
             }

@@ -20,7 +20,7 @@ namespace TrafficComet.Core
         public DateTime StartDateLocal { get; internal set; }
         public DateTime EndDateLocal { get; internal set; }
         public string TraceId { get; internal set; }
-        public string ClientUniqueId { get; internal set; }
+        public string ClientId { get; internal set; }
         public string ApplicationId { get; internal set; }
         public bool IgnoreWholeRequest { get; internal set; }
         public bool IgnoreRequest { get; internal set; }

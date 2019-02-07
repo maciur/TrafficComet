@@ -6,7 +6,7 @@ using TrafficComet.Abstracts.Factories;
 using TrafficComet.Abstracts.Logs.Request;
 using TrafficComet.Abstracts.Logs.Response;
 using TrafficComet.Abstracts.Readers;
-using TrafficComet.Abstractss.Factories;
+using TrafficComet.Abstracts.Factories;
 using TrafficComet.Core.Tests.Mock;
 using TrafficComet.Core.Tests.Tests.Mocks;
 

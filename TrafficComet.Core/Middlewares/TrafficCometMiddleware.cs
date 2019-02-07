@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TrafficComet.Abstracts;
 using TrafficComet.Abstracts.Accessors;
 using TrafficComet.Abstracts.Writers;
-using TrafficComet.Abstractss.Factories;
+using TrafficComet.Abstracts.Factories;
 using TrafficComet.Core.Configs;
 
 namespace TrafficComet.Core.Middlewares
@@ -29,7 +29,7 @@ namespace TrafficComet.Core.Middlewares
 
 		public async Task Invoke(HttpContext httpContext, ITrafficCometMiddlewaresAccessor trafficCometAccessor,
 			ITrafficLogWriter logWriter, ITrafficLogFactory logFactory, ITraceIdGenerator traceIdGenerator,
-			IClientUniqueIdGenerator clientUniqueIdGenerator)
+			IClientIdGenerator clientUniqueIdGenerator)
 		{
 			if (trafficCometAccessor == null)
 				throw new ArgumentNullException(nameof(trafficCometAccessor));
@@ -50,9 +50,11 @@ namespace TrafficComet.Core.Middlewares
 			internalTrafficCometAccessor.ApplicationId = ((TrafficCometMiddlewareConfig)Config.Value).ApplicationId;
 			internalTrafficCometAccessor.IgnoreWholeRequest = IgnoreThisRequest(httpContext.Request.Path);
 
-			if (!internalTrafficCometAccessor.IgnoreWholeRequest)
+			if (!internalTrafficCometAccessor.IgnoreWholeRequest 
+                && clientUniqueIdGenerator.TryGenerateClientId(out string clientId)
+                && traceIdGenerator.TryGenerateTraceId(out string traceId))
 			{
-				BeforeExecuteNextMiddleware(ref internalTrafficCometAccessor, ref traceIdGenerator, ref clientUniqueIdGenerator);
+                BeforeExecuteNextMiddleware(ref internalTrafficCometAccessor, clientId, traceId);
 				await Next(httpContext);
 
 				try
@@ -64,7 +66,7 @@ namespace TrafficComet.Core.Middlewares
 					var log = logFactory.Create();
 					if (log != null)
 					{
-						var writerResult = logWriter.SaveLog(log);
+                        _ = logWriter.SaveLog(log);
                     }
 				}
 				catch (Exception ex)
@@ -88,10 +90,10 @@ namespace TrafficComet.Core.Middlewares
         }
 
         protected internal void BeforeExecuteNextMiddleware(ref TrafficCometMiddlewaresAccessor trafficCometAccessor,
-                    ref ITraceIdGenerator traceIdGenerator, ref IClientUniqueIdGenerator clientUniqueIdGenerator)
+            string clientid, string traceId)
 		{
-            trafficCometAccessor.TraceId = traceIdGenerator.GenerateTraceId();
-            trafficCometAccessor.ClientUniqueId = clientUniqueIdGenerator.GenerateClientUniqueId();
+            trafficCometAccessor.ClientId = clientid;
+            trafficCometAccessor.TraceId = traceId;
             trafficCometAccessor.StartDateUtc = DateTime.UtcNow;
             trafficCometAccessor.StartDateLocal = DateTime.Now.ToLocalTime();
 		}

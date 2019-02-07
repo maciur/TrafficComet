@@ -28,8 +28,8 @@ namespace TrafficComet.Core.Extensions
             Parallel.ForEach(request.Headers, header =>
             {
                 if (!ignoreHeaders.SafeContains(header.Key) 
-				&& header.Key != RequestHeadersToIgnoreConsts.UserClient
-				&& header.Key != RequestHeadersToIgnoreConsts.Cookies)
+				&& header.Key != RequestHeadersToIgnoreConsts.USER_CLIENT
+				&& header.Key != RequestHeadersToIgnoreConsts.COOKIES)
                 {
 					headers.TryAdd(header.Key, header.Value);
                 }

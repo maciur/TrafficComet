@@ -3,7 +3,7 @@ using Microsoft.Extensions.Options;
 using System;
 using TrafficComet.Abstracts.Accessors;
 using TrafficComet.Abstracts.Logs.Response;
-using TrafficComet.Abstractss.Factories;
+using TrafficComet.Abstracts.Factories;
 using TrafficComet.Core.Configs;
 using TrafficComet.Core.Extensions;
 

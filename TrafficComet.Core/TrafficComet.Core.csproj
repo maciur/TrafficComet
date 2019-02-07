@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TrafficComet.Abstracts\TrafficComet.Abstracts.csproj" />
-    <ProjectReference Include="..\TrafficComet.JsonLogWriter\TrafficComet.JsonLogWriter.csproj" />
   </ItemGroup>
 
 </Project>

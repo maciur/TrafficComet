@@ -14,17 +14,17 @@ namespace TrafficComet.Core.Tests.Tests.Generators
 		{
 			var httpContextAccessor = MockServicesHelper
 				.CreateHttpContextAccessor(requestCookie: MockStaticData.RequestCookiesWithTrackIds);
-			var generator = new CookieClientUniqueIdGenerator(httpContextAccessor, null);
-			Assert.AreEqual(generator.GenerateClientUniqueId(), MockStaticData.UserUniqueId);
+			var generator = new CookieClientIdGenerator(httpContextAccessor, null);
+			Assert.AreEqual(generator.GenerateClientId(), MockStaticData.UserUniqueId);
 		}
 
 		[Test]
 		public void GetClientUniqueId_CookieDoesntExist()
 		{
-			var generator = new CookieClientUniqueIdGenerator(MockServicesHelper
+			var generator = new CookieClientIdGenerator(MockServicesHelper
 				.CreateHttpContextAccessor(), null);
 
-			Assert.True(Guid.TryParse(generator.GenerateClientUniqueId(), out Guid clientUniqueId));
+			Assert.True(Guid.TryParse(generator.GenerateClientId(), out Guid clientUniqueId));
 		}
 	}
 }

@@ -1,6 +1,6 @@
 ﻿using TrafficComet.Abstracts.Logs.Response;
 
-namespace TrafficComet.Abstractss.Factories
+namespace TrafficComet.Abstracts.Factories
 {
     public interface IResponseLogFactory
 	{
