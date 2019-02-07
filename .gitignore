@@ -1,10 +1,7 @@
-/.vs
-
-
-
-**/obj
+**/.vs/
 **/bin
-
-**.user
-/nuget
-
+**/obj
+**/*.csproj.user
+**/node_modules
+**/wwwroot
+**/appsettings.dev.json

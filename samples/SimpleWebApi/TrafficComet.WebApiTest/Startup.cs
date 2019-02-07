@@ -21,7 +21,7 @@ namespace TrafficComet.WebApiTest
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddMvc();
-			services.AddTrafficComet(Configuration, false);
+			services.AddTrafficComet(Configuration);
 			services.Configure<GzipCompressionProviderOptions>((opts) => opts.Level = CompressionLevel.Optimal);
 			services.AddResponseCompression((opts) =>
 			{
