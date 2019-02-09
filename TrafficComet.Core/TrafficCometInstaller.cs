@@ -51,7 +51,7 @@ namespace TrafficComet.Core
             services.TryAddTransient<ITraceIdGeneratorConfiguration, TraceIdGeneratorConfiguration>();
 
             //Accessors
-            services.AddScoped<ITrafficCometMiddlewaresAccessor, TrafficCometMiddlewaresAccessor>();
+            services.AddTransient<ITrafficCometMiddlewaresAccessor, TrafficCometMiddlewaresAccessor>();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //Readers
             services.TryAddTransient<IIpAddressReader, IpAddressReader>();
@@ -62,22 +62,22 @@ namespace TrafficComet.Core
             //Generators
             if (readTraceIdAndClientIfFromHeaders)
             {
-                services.TryAddScoped<IClientIdGenerator, HttpHeaderClientIdGenerator>();
-                services.TryAddScoped<ITraceIdGenerator, HttpHeaderTraceIdGenerator>();
+                services.TryAddTransient<IClientIdGenerator, HttpHeaderClientIdGenerator>();
+                services.TryAddTransient<ITraceIdGenerator, HttpHeaderTraceIdGenerator>();
             }
             else
             {
-                services.TryAddScoped<IClientIdGenerator, CookieClientIdGenerator>();
-                services.TryAddScoped<ITraceIdGenerator, TraceIdGenerator>();
+                services.TryAddTransient<IClientIdGenerator, CookieClientIdGenerator>();
+                services.TryAddTransient<ITraceIdGenerator, TraceIdGenerator>();
             }
 
             //Factories
-            services.TryAddScoped<IServerLogFactory, ServiceLogFactory>();
-            services.TryAddScoped<IClientLogFactory, ClientLogFactory>();
-            services.TryAddScoped<ITrafficLogFactory, TrafficLogFactory>();
-            services.TryAddScoped<IRequestLogFactory, RequestLogFactory>();
-            services.TryAddScoped<IResponseLogFactory, ResponseLogFactory>();
-            services.TryAddScoped<IDatesTrafficFactory, DatesTrafficFactory>();
+            services.TryAddTransient<IServerLogFactory, ServiceLogFactory>();
+            services.TryAddTransient<IClientLogFactory, ClientLogFactory>();
+            services.TryAddTransient<ITrafficLogFactory, TrafficLogFactory>();
+            services.TryAddTransient<IRequestLogFactory, RequestLogFactory>();
+            services.TryAddTransient<IResponseLogFactory, ResponseLogFactory>();
+			services.TryAddTransient<IDatesTrafficFactory, DatesTrafficFactory>();
 
             return services;
         }

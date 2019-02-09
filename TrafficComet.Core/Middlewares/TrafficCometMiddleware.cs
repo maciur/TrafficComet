@@ -47,12 +47,14 @@ namespace TrafficComet.Core.Middlewares
 				throw new ArgumentNullException(nameof(clientUniqueIdGenerator));
 
 			TrafficCometMiddlewaresAccessor internalTrafficCometAccessor = (TrafficCometMiddlewaresAccessor)trafficCometAccessor;
+			internalTrafficCometAccessor.InitContextValues();
 			internalTrafficCometAccessor.ApplicationId = ((TrafficCometMiddlewareConfig)Config.Value).ApplicationId;
 			internalTrafficCometAccessor.IgnoreWholeRequest = IgnoreThisRequest(httpContext.Request.Path);
 
-			if (!internalTrafficCometAccessor.IgnoreWholeRequest 
-                && clientUniqueIdGenerator.TryGenerateClientId(out string clientId)
-                && traceIdGenerator.TryGenerateTraceId(out string traceId))
+			var clientIdReaded = clientUniqueIdGenerator.TryGenerateClientId(out string clientId);
+			var traceIdReaded = traceIdGenerator.TryGenerateTraceId(out string traceId);
+
+			if (!internalTrafficCometAccessor.IgnoreWholeRequest && clientIdReaded && traceIdReaded)
 			{
                 BeforeExecuteNextMiddleware(ref internalTrafficCometAccessor, clientId, traceId);
 				await Next(httpContext);

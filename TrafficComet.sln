@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficComet.Core", "Traffi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficComet.Abstracts", "TrafficComet.Abstracts\TrafficComet.Abstracts.csproj", "{26E3894A-2B59-451D-9BF2-342BC1F81D22}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficComet.WebApiTest", "samples\SimpleWebApi\TrafficComet.WebApiTest\TrafficComet.WebApiTest.csproj", "{FD3BD7EE-3F8A-44DB-A22C-C1FA7795B7B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{BF9E3D8F-DA29-4DFA-8255-745E1B247B84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimpleWebApi", "SimpleWebApi", "{53492740-804E-4512-8EA3-B3525D4EDFCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +27,17 @@ Global
 		{26E3894A-2B59-451D-9BF2-342BC1F81D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26E3894A-2B59-451D-9BF2-342BC1F81D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26E3894A-2B59-451D-9BF2-342BC1F81D22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD3BD7EE-3F8A-44DB-A22C-C1FA7795B7B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD3BD7EE-3F8A-44DB-A22C-C1FA7795B7B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD3BD7EE-3F8A-44DB-A22C-C1FA7795B7B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD3BD7EE-3F8A-44DB-A22C-C1FA7795B7B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FD3BD7EE-3F8A-44DB-A22C-C1FA7795B7B0} = {53492740-804E-4512-8EA3-B3525D4EDFCF}
+		{53492740-804E-4512-8EA3-B3525D4EDFCF} = {BF9E3D8F-DA29-4DFA-8255-745E1B247B84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {06F12E99-7ACF-4239-B4F7-0E4A6CCC3EAF}
