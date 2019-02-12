@@ -5,5 +5,10 @@
     <Authors>Maciej Kacprzak</Authors>
     <Company>Maciej Kacprzak</Company>
     <Version>2.2.0</Version>
+    <PackageLicenseUrl>https://github.com/maciur/TrafficComet</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/maciur/TrafficComet</PackageProjectUrl>
+    <Copyright>Maciej Kacprzak</Copyright>
+    <RepositoryUrl>https://github.com/maciur/TrafficComet</RepositoryUrl>
+    <Description>Tool for saving information about (request/response) from website to separate storage</Description>
   </PropertyGroup>
 </Project>
