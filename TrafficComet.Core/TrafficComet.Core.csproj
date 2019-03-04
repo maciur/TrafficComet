@@ -7,13 +7,14 @@
     <Description>Tool for saving information about (request/response) from website to separate storage</Description>
     <Product>TrafficComet</Product>
     <PackageId>TrafficComet</PackageId>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/maciur/TrafficComet</RepositoryUrl>
     <PackageProjectUrl>https://github.com/maciur/TrafficComet</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/maciur/TrafficComet</PackageLicenseUrl>
     <Copyright>Maciej Kacprzak</Copyright>
-    <Version>2.3.0</Version>
+    <Version>2.4.0</Version>
+    <PackageReleaseNotes>TrafficComet</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

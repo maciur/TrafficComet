@@ -20,6 +20,9 @@ namespace TrafficComet.Core.Middlewares
 
 		protected internal bool IgnoreThisRequest(PathString requestPath)
 		{
+            if (Config.Value.StopLogging)
+                return true;
+
 			if (requestPath.HasValue)
 			{
 				if (requestPath.Value.Contains(".") && !Config.Value.StartLoggingFileRequest)

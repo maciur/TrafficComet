@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
+using TrafficComet.Abstracts.Consts;
 
 namespace TrafficComet.Core.Extensions
 {
@@ -11,6 +12,18 @@ namespace TrafficComet.Core.Extensions
                 throw new ArgumentNullException(nameof(pathSemgments));
 
             return configuration.GetSection(string.Join(':', pathSemgments));
+        }
+
+        internal static bool StopLogging(this IConfiguration configuration)
+        {
+            if (configuration == null)
+                throw new NullReferenceException(nameof(configuration));
+
+            var stopLogging = configuration.GetValue<bool>(string.Join(':', ConfigurationSelectors.ROOT,
+                ConfigurationSelectors.MIDDLEWARE, ConfigurationSelectors.MIDDLEWARE_ROOT,
+                ConfigurationSelectors.MIDDLEWARE_STOP_LOGGING));
+
+            return stopLogging;
         }
     }
 }

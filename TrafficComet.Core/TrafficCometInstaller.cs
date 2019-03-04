@@ -18,6 +18,8 @@ using TrafficComet.Core.Middlewares;
 using TrafficComet.Core.Readers;
 
 [assembly: InternalsVisibleTo("TrafficComet.Core.Tests")]
+[assembly: InternalsVisibleTo("TrafficComet.Splunk.LogWriter")]
+
 namespace TrafficComet.Core
 {
     public static class TrafficCometInstaller
@@ -27,13 +29,11 @@ namespace TrafficComet.Core
             return services.AddTrafficComet(configuration, false);
         }
 
-        public static IServiceCollection AddTrafficComet(this IServiceCollection services, IConfiguration configuration, bool readTraceIdAndClientIfFromHeaders)
+        public static IServiceCollection AddTrafficComet(this IServiceCollection services, IConfiguration configuration,
+            bool readTraceIdAndClientIfFromHeaders)
         {
-            //Configurations
-            services.AddOptions();
-
-            services.Configure<TrafficCometMiddlewareConfig>(configuration
-                .GetSection(ConfigurationSelectors.ROOT, ConfigurationSelectors.MIDDLEWARE, ConfigurationSelectors.MIDDLEWARE_ROOT));
+            services.Configure<TrafficCometMiddlewareConfig>(configuration.GetSection(ConfigurationSelectors.ROOT,
+                ConfigurationSelectors.MIDDLEWARE, ConfigurationSelectors.MIDDLEWARE_ROOT));
 
             services.Configure<RequestReadMiddleware>(configuration
                 .GetSection(ConfigurationSelectors.ROOT, ConfigurationSelectors.MIDDLEWARE, ConfigurationSelectors.MIDDLEWARE_REQUEST));
@@ -77,7 +77,7 @@ namespace TrafficComet.Core
             services.TryAddTransient<ITrafficLogFactory, TrafficLogFactory>();
             services.TryAddTransient<IRequestLogFactory, RequestLogFactory>();
             services.TryAddTransient<IResponseLogFactory, ResponseLogFactory>();
-			services.TryAddTransient<IDatesTrafficFactory, DatesTrafficFactory>();
+            services.TryAddTransient<IDatesTrafficFactory, DatesTrafficFactory>();
 
             return services;
         }

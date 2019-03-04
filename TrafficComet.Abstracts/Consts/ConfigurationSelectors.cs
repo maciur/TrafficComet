@@ -8,6 +8,7 @@
         public const string MIDDLEWARE_ROOT = "Root";
         public const string MIDDLEWARE_REQUEST = "Request";
         public const string MIDDLEWARE_RESPONSE = "Response";
+        public const string MIDDLEWARE_STOP_LOGGING = "StopLogging";
         public const string GENERATOR = "Generator";
         public const string GENERATOR_CLIENT_ID = "ClientId";
         public const string GENERATOR_TRACE_ID = "TraceId";
