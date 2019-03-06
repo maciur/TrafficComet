@@ -9,13 +9,14 @@ namespace TrafficComet.WebApiTest.Controllers
 	{
 		// GET api/values
 		[HttpGet]
-		public IEnumerable<string> Get([FromServices]ITrafficCometMiddlewaresAccessor cometAccessor)
+		public IEnumerable<string> Get()
 		{
-			cometAccessor.CustomParams.Add("Test custom param", "test value");
-			cometAccessor.RequestCustomParams.Add("Request test custom param", "test value");
-			cometAccessor.ResponseCustomParams.Add("Response test custom param", "test value");
+            //[FromServices]ITrafficCometMiddlewaresAccessor cometAccessor
+            //cometAccessor.CustomParams.Add("Test custom param", "test value");
+            //cometAccessor.RequestCustomParams.Add("Request test custom param", "test value");
+            //cometAccessor.ResponseCustomParams.Add("Response test custom param", "test value");
 
-			return new string[] { "value1", "value2" };
+            return new string[] { "value1", "value2" };
 		}
 
 		// GET api/values/5
