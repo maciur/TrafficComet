@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <Authors>Maciej Kacprzak</Authors>
     <Company>Maciej Kacprzak</Company>
-    <Version>2.2.0</Version>
+    <Version>2.3.0</Version>
     <PackageLicenseUrl>https://github.com/maciur/TrafficComet</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/maciur/TrafficComet</PackageProjectUrl>
     <Copyright>Maciej Kacprzak</Copyright>
