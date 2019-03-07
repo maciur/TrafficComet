@@ -15,13 +15,14 @@ namespace TrafficComet.Core.Middlewares
 	{
         protected ILogger<TrafficCometMiddleware> Logger { get; }
         protected RequestDelegate Next { get; }
-        public TrafficCometMiddleware(RequestDelegate next, IOptions<TrafficCometMiddlewareConfig> config)
+        public TrafficCometMiddleware(RequestDelegate next, IOptionsSnapshot<TrafficCometMiddlewareConfig> config)
 			: base(config)
 		{
 			Next = next ?? throw new ArgumentNullException(nameof(next));
 		}
 
-		public TrafficCometMiddleware(RequestDelegate next, ILogger<TrafficCometMiddleware> logger, IOptions<TrafficCometMiddlewareConfig> config)
+		public TrafficCometMiddleware(RequestDelegate next, ILogger<TrafficCometMiddleware> logger, 
+            IOptionsSnapshot<TrafficCometMiddlewareConfig> config)
 			: this(next, config)
 		{
 			Logger = logger ?? throw new ArgumentNullException(nameof(logger));

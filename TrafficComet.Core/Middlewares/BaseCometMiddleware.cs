@@ -8,9 +8,9 @@ namespace TrafficComet.Core.Middlewares
 {
 	public class BaseCometMiddleware
 	{
-		protected IOptions<BaseMiddlewareConfig> Config { get; }
+		protected IOptionsSnapshot<BaseMiddlewareConfig> Config { get; }
 
-		public BaseCometMiddleware(IOptions<BaseMiddlewareConfig> config)
+		public BaseCometMiddleware(IOptionsSnapshot<BaseMiddlewareConfig> config)
 		{
 			Config = config;
 		}
