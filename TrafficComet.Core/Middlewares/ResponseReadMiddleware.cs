@@ -16,19 +16,19 @@ namespace TrafficComet.Core.Middlewares
         protected ILogger<RequestReadMiddleware> Logger { get; }
         protected RequestDelegate Next { get; }
 
-        public ResponseReadMiddleware(RequestDelegate next, IOptionsSnapshot<ResponseReadMiddlewareConfig> config) : base(config)
+        public ResponseReadMiddleware(RequestDelegate next)
         {
             Next = next ?? throw new ArgumentNullException(nameof(next));
         }
 
-        public ResponseReadMiddleware(ILogger<RequestReadMiddleware> logger, RequestDelegate next,
-            IOptionsSnapshot<ResponseReadMiddlewareConfig> config) : this(next, config)
+        public ResponseReadMiddleware(ILogger<RequestReadMiddleware> logger, RequestDelegate next)
+            : this(next)
         {
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task Invoke(HttpContext httpContext, ITrafficCometMiddlewaresAccessor trafficCometAccessor,
-            IDynamicBodyReader dynamicBodyReader)
+            IDynamicBodyReader dynamicBodyReader, IOptionsSnapshot<ResponseReadMiddlewareConfig> config)
         {
             if (trafficCometAccessor == null)
                 throw new ArgumentNullException(nameof(trafficCometAccessor));
@@ -37,7 +37,8 @@ namespace TrafficComet.Core.Middlewares
                 throw new ArgumentNullException(nameof(dynamicBodyReader));
 
             TrafficCometMiddlewaresAccessor internalTrafficCometAccessor = (TrafficCometMiddlewaresAccessor)trafficCometAccessor;
-            internalTrafficCometAccessor.IgnoreResponse = !internalTrafficCometAccessor.IgnoreWholeRequest && IgnoreThisRequest(httpContext.Request.Path);
+            internalTrafficCometAccessor.IgnoreResponse = !internalTrafficCometAccessor.IgnoreWholeRequest
+                && config.IgnoreRequest(httpContext.Request.Path);
 
             if (!internalTrafficCometAccessor.IgnoreResponse)
             {

@@ -13,9 +13,9 @@
     <PackageProjectUrl>https://github.com/maciur/TrafficComet</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/maciur/TrafficComet</PackageLicenseUrl>
     <Copyright>Maciej Kacprzak</Copyright>
-    <Version>2.6.0</Version>
+    <Version>2.7.0</Version>
     <PackageReleaseNotes>TrafficComet</PackageReleaseNotes>
-    <FileVersion>2.6.0.0</FileVersion>
+    <FileVersion>2.7.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

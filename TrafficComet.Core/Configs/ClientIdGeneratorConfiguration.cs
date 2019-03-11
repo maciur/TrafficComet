@@ -6,17 +6,17 @@ namespace TrafficComet.Core.Configs
 {
     public class ClientIdGeneratorConfiguration : IClientIdGeneratorConfiguration
     {
-        protected IOptionsSnapshot<ClientIdGeneratorConfig> Config { get; }
+        protected IOptionsMonitor<ClientIdGeneratorConfig> Config { get; }
 
-        public string CookieName => !string.IsNullOrEmpty(Config?.Value?.CookieName) ?
-            Config.Value.CookieName : DefaultTrafficCometValues.CLIENT_ID_COOKIE_NAME;
+        public string CookieName => !string.IsNullOrEmpty(RawConfig?.CookieName) ?
+            RawConfig.CookieName : DefaultTrafficCometValues.CLIENT_ID_COOKIE_NAME;
 
-        public string HeaderName => !string.IsNullOrEmpty(Config?.Value?.HeaderName) ?
-            Config.Value.HeaderName : DefaultTrafficCometValues.CLIENT_ID_HEADER;
+        public string HeaderName => !string.IsNullOrEmpty(RawConfig?.HeaderName) ?
+            RawConfig.HeaderName : DefaultTrafficCometValues.CLIENT_ID_HEADER;
 
-        public ClientIdGeneratorConfig RawConfig => Config?.Value;
+        public ClientIdGeneratorConfig RawConfig => Config?.CurrentValue;
 
-        public ClientIdGeneratorConfiguration(IOptionsSnapshot<ClientIdGeneratorConfig> clientIdGeneratorConfig)
+        public ClientIdGeneratorConfiguration(IOptionsMonitor<ClientIdGeneratorConfig> clientIdGeneratorConfig)
         {
             Config = clientIdGeneratorConfig;
         }

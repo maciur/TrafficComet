@@ -8,6 +8,7 @@ using TrafficComet.Abstracts.Accessors;
 using TrafficComet.Abstracts.Writers;
 using TrafficComet.Abstracts.Factories;
 using TrafficComet.Core.Configs;
+using TrafficComet.Core.Extensions;
 
 namespace TrafficComet.Core.Middlewares
 {
@@ -15,22 +16,20 @@ namespace TrafficComet.Core.Middlewares
 	{
         protected ILogger<TrafficCometMiddleware> Logger { get; }
         protected RequestDelegate Next { get; }
-        public TrafficCometMiddleware(RequestDelegate next, IOptionsSnapshot<TrafficCometMiddlewareConfig> config)
-			: base(config)
+        public TrafficCometMiddleware(RequestDelegate next)
 		{
 			Next = next ?? throw new ArgumentNullException(nameof(next));
 		}
 
-		public TrafficCometMiddleware(RequestDelegate next, ILogger<TrafficCometMiddleware> logger, 
-            IOptionsSnapshot<TrafficCometMiddlewareConfig> config)
-			: this(next, config)
+		public TrafficCometMiddleware(RequestDelegate next, ILogger<TrafficCometMiddleware> logger)
+			: this(next)
 		{
-			Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
 		}
 
 		public async Task Invoke(HttpContext httpContext, ITrafficCometMiddlewaresAccessor trafficCometAccessor,
 			ITrafficLogWriter logWriter, ITrafficLogFactory logFactory, ITraceIdGenerator traceIdGenerator,
-			IClientIdGenerator clientUniqueIdGenerator)
+			IClientIdGenerator clientUniqueIdGenerator, IOptionsSnapshot<TrafficCometMiddlewareConfig> config)
 		{
 			if (trafficCometAccessor == null)
 				throw new ArgumentNullException(nameof(trafficCometAccessor));
@@ -49,8 +48,8 @@ namespace TrafficComet.Core.Middlewares
 
 			TrafficCometMiddlewaresAccessor internalTrafficCometAccessor = (TrafficCometMiddlewaresAccessor)trafficCometAccessor;
 			internalTrafficCometAccessor.InitContextValues();
-			internalTrafficCometAccessor.ApplicationId = ((TrafficCometMiddlewareConfig)Config.Value).ApplicationId;
-			internalTrafficCometAccessor.IgnoreWholeRequest = IgnoreThisRequest(httpContext.Request.Path);
+            internalTrafficCometAccessor.ApplicationId = config.Value.ApplicationId;
+            internalTrafficCometAccessor.IgnoreWholeRequest = config.IgnoreRequest(httpContext.Request.Path);
 
 			var clientIdReaded = clientUniqueIdGenerator.TryGenerateClientId(out string clientId);
 			var traceIdReaded = traceIdGenerator.TryGenerateTraceId(out string traceId);
@@ -76,7 +75,7 @@ namespace TrafficComet.Core.Middlewares
 				{
 					if (Logger != null && Logger.IsEnabled(LogLevel.Error))
 					{
-						Logger.LogError(new EventId(92, $"TrafficComet.{nameof(TrafficCometMiddleware)}"), ex, ex.ToString());
+                        Logger.LogError(new EventId(92, $"TrafficComet.{nameof(TrafficCometMiddleware)}"), ex, ex.ToString());
 					}
 				}
 			}

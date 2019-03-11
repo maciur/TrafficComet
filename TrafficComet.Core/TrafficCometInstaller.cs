@@ -35,10 +35,10 @@ namespace TrafficComet.Core
             services.Configure<TrafficCometMiddlewareConfig>(configuration.GetSection(ConfigurationSelectors.ROOT,
                 ConfigurationSelectors.MIDDLEWARE, ConfigurationSelectors.MIDDLEWARE_ROOT));
 
-            services.Configure<RequestReadMiddleware>(configuration
+            services.Configure<RequestReadMiddlewareConfig>(configuration
                 .GetSection(ConfigurationSelectors.ROOT, ConfigurationSelectors.MIDDLEWARE, ConfigurationSelectors.MIDDLEWARE_REQUEST));
 
-            services.Configure<ResponseReadMiddleware>(configuration
+            services.Configure<ResponseReadMiddlewareConfig>(configuration
                 .GetSection(ConfigurationSelectors.ROOT, ConfigurationSelectors.MIDDLEWARE, ConfigurationSelectors.MIDDLEWARE_RESPONSE));
 
             services.Configure<ClientIdGeneratorConfig>(configuration
@@ -47,8 +47,8 @@ namespace TrafficComet.Core
             services.Configure<TraceIdGeneratorConfig>(configuration
                 .GetSection(ConfigurationSelectors.ROOT, ConfigurationSelectors.GENERATOR, ConfigurationSelectors.GENERATOR_TRACE_ID));
 
-            services.TryAddTransient<IClientIdGeneratorConfiguration, ClientIdGeneratorConfiguration>();
-            services.TryAddTransient<ITraceIdGeneratorConfiguration, TraceIdGeneratorConfiguration>();
+            services.AddTransient<IClientIdGeneratorConfiguration, ClientIdGeneratorConfiguration>();
+            services.AddTransient<ITraceIdGeneratorConfiguration, TraceIdGeneratorConfiguration>();
 
             //Accessors
             services.AddTransient<ITrafficCometMiddlewaresAccessor, TrafficCometMiddlewaresAccessor>();

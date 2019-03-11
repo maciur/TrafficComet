@@ -6,14 +6,14 @@ namespace TrafficComet.Core.Configs
 {
     public class TraceIdGeneratorConfiguration : ITraceIdGeneratorConfiguration
     {
-        protected IOptionsSnapshot<TraceIdGeneratorConfig> Config { get; }
+        protected IOptionsMonitor<TraceIdGeneratorConfig> Config { get; }
 
-        public string HeaderName => !string.IsNullOrEmpty(Config?.Value?.HeaderName) ?
-            Config.Value.HeaderName : DefaultTrafficCometValues.TRACE_ID_HEADER;
+        public string HeaderName => !string.IsNullOrEmpty(RawConfig?.HeaderName) ?
+            RawConfig.HeaderName : DefaultTrafficCometValues.TRACE_ID_HEADER;
 
-        public TraceIdGeneratorConfig RawConfig => Config?.Value;
+        public TraceIdGeneratorConfig RawConfig => Config?.CurrentValue;
 
-        public TraceIdGeneratorConfiguration(IOptionsSnapshot<TraceIdGeneratorConfig> clientIdGeneratorConfig)
+        public TraceIdGeneratorConfiguration(IOptionsMonitor<TraceIdGeneratorConfig> clientIdGeneratorConfig)
         {
             Config = clientIdGeneratorConfig;
         }
